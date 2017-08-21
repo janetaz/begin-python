@@ -31,11 +31,9 @@ while True:
         print ("Whoo! I'm so good! I guessed it in " + str(count) + " tries.")
         break
     elif response == 'too high':
-        R = rng[midlength] #+/-1?
+        R = rng[midlength]
     elif response == 'too low':
-        L = rng[midlength] #+1?
-        #trying w 77 fuuuuck yeah
-        
-        
+        L = rng[midlength] + 1 #most recent change        
+    
     
 
