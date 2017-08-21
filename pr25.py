@@ -19,24 +19,22 @@
 
 count = 0
 rng = [x for x in range(0,101)] #cleaner way?
-#midlength = int((len(rng) - 1) / 2)  #largest previous int of (L+R)/2?
 L = 0
 R = len(rng) - 1
 print ("Let's begin!")
 
 while True:
     count += 1
+    midlength = int((R + L) / 2)  #largest previous int of (L+R)/2
     response = input("Is it " + str(midlength) + "?: ").lower() #place for %s?
     if response == 'yes':
         print ("Whoo! I'm so good! I guessed it in " + str(count) + " tries.")
         break
     elif response == 'too high':
-        R = rng[midlength]
-        midlength = midlength / 2
+        R = rng[midlength] #+/-1?
     elif response == 'too low':
-        
-        midlength = midlength + midlength / 2 # i can end w/ elif, ya?
-        
+        L = rng[midlength] #+1?
+        #trying w 77 fuuuuck yeah
         
         
     
