@@ -22,9 +22,9 @@ no_winner = [[1, 2, 0],
 also_no_winner = [[1, 2, 0],
 	[2, 1, 0],
 	[2, 1, 0]]
-winner_by_rows = [[3, 3, 3],
-	[2, 1, 0],
-	[0, 1, 1]]
+winner_by_diag = [[4, 3, 5],
+	[2, 5, 0],
+	          [5, 1, 4]]
 
 #rows: could clean, but I like the consistency
 
@@ -34,16 +34,20 @@ def win_lose(board): #takes list of lists called board
 
     while l >= 0:
         if board[0][l] == board[1][l] == board[2][l]: #check columns
-            result = str(board[l][0]) + '\'s win!'
+            result = str(board[0][l]) + '\'s win!'
         #l -= 1
         elif board[l][0] == board[l][1] == board[l][2]: #check rows
             result = str(board[l][0]) + '\'s win!'
+        #l -= 1
+        elif board[0][0] == board[1][1] == board[2][2] or board[0][2] == board[1][1] == board[2][0]: #check diag, both ways
+            result = str(board[1][1]) + '\'s win!'
         l -= 1
+
     return result
     #if board[0][0] == board[1][0] == board[2][0]:
         
             
 
-a = win_lose(winner_by_rows)
+a = win_lose(winner_by_diag)
 print (a)
 #OHHH! it starts at...never gets to 0. Yeahhhhh boyyy your boy figured it out. I'm dope. 
