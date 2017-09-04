@@ -18,6 +18,23 @@ from pr24 import writeTop, writeVert, writeBoard
 #board = writeBoard(5)
 #print (board)
 
+#___input getting function___
+def getMove(board, playerNum):
+    silo = [] #stores guess to be divided into ints
+    move = (input("Player 1, choose a row & column: ")).split(',')
+    for elem in move:
+        silo.append(elem.strip())#why does int not work?
+    if playerNum == 1: 
+        board[int(silo[0]) - 1][int(silo[1]) - 1] = 'x'
+    else: 
+        board[int(silo[0]) - 1][int(silo[1]) - 1] = 'o'
+#board will need to be updated, returned, then recycled
+
+#indent whole stuff:
+#if __name__ == '__main__':
+
+
+
 #___game board (internal use)___
 board = [[0,0,0],
          [0,0,0],
