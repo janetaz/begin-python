@@ -10,34 +10,62 @@
 #Need: condition only accepting 1, 2, 3 as inputs
 #Need: win condition that stops the game
 #Need: condition that prevents overwriting of x, o
+#
+#read up on functions from previous project, all those links
 #_____________________________
 
-from pr24 import writeTop, writeVert, writeBoard
+#from pr24 import writeTop, writeVert, writeBoard
 
 #___printable board___
 #board = writeBoard(5)
 #print (board)
 
-#___game board (internal use)___
-board = [[0,0,0],
-         [0,0,0],
-         [0,0,0]] #cute pythonic way to do this?
+#___input getting function___
+def turn(board):
+    silo = [] #stores guess to be divided into ints
+#Player 1 
+    while True:
+        move1 = (input("Player 1, choose a row & column: ")).split(',')
+        for elem in move1:
+            silo.append(elem.strip())#why does int not work?
+        if board[int(silo[0]) - 1][int(silo[1]) - 1] != 0:#trying 0 vs '0'
+            print ("Spot is occupied! Try again!")
+        else:
+            board[int(silo[0]) - 1][int(silo[1]) - 1] = 'x'
+            break
+#Player 2
+#ohhh i was *appending* to silo, not replacing 
+    silo2 = []
+    while True:
+        move2 = (input("Player 2, choose a row & column: ")).split(',')
+        for elem in move2:
+            silo2.append(elem.strip())#why does int not work?
+        if board[int(silo2[0]) - 1][int(silo2[1]) - 1] != 0:
+            print ("Spot is occupied! Try again!")
+        else:
+            board[int(silo2[0]) - 1][int(silo2[1]) - 1] = 'o'
+            break
 
-print ("Welcome to the game! Press Control + C to quit.")
-while True:
-    inp1clean = []
-    inp2clean = []
+#simpler way to do ^ == generalized 1 turn function, taking player number, board, and x/o but, I'd need to pass the board from the previous fnxn
 
-    inp1 = (input("Player 1, choose a row & column: ")).split(',')
-    for elem in inp1:
-        inp1clean.append(elem.strip())#why does int not work?
-    board[int(inp1clean[0]) - 1][int(inp1clean[1]) - 1] = 'x'
+    #board will need to be updated, returned, then recycled
+    boardNew = board
+    return boardNew
 
-    inp2 = (input("Player 2, choose a row & column: ")).split(',')
-    for elem in inp2:
-        inp2clean.append(elem.strip())
-    board[int(inp2clean[0]) - 1][int(inp2clean[1]) - 1] = 'o'
-#___Print board___
-    for lis in board:
+
+    #indent whole stuff:
+if __name__ == '__main__':
+
+    #___game board (internal use)___
+    staticBoard = [[0,0,0],
+             [0,0,0],
+             [0,0,0]] #cute pythonic way to do this?
+
+    print ("Welcome to the game! Press Control + C to quit.")
+    #while True:
+    round1 = turn(staticBoard)
+    for lis in round1:
         print (lis)
-    
+
+
+
