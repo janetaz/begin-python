@@ -22,29 +22,29 @@
 
 #___input getting function___
 def turn(board):
-    silo = [] #stores guess to be divided into ints
 #Player 1 
     while True:
+        silo = []
         move1 = (input("Player 1, choose a row & column: ")).split(',')
         for elem in move1:
             silo.append(elem.strip())#why does int not work?
-        if board[int(silo[0]) - 1][int(silo[1]) - 1] != 0:#trying 0 vs '0'
-            print ("Spot is occupied! Try again!")
-        else:
+        if board[int(silo[0]) - 1][int(silo[1]) - 1] == 0:#trying 0 vs '0'
             board[int(silo[0]) - 1][int(silo[1]) - 1] = 'x'
             break
+        print ("Spot is occupied! Try again!")
+#hm...that didn't work either...
+#oh fuck! I'm doing the same error where i appended to silo n not silo2!! I 
 #Player 2
 #ohhh i was *appending* to silo, not replacing 
-    silo2 = []
     while True:
+        silo2 = []
         move2 = (input("Player 2, choose a row & column: ")).split(',')
         for elem in move2:
             silo2.append(elem.strip())#why does int not work?
-        if board[int(silo2[0]) - 1][int(silo2[1]) - 1] != 0:
-            print ("Spot is occupied! Try again!")
-        else:#Oh, bc i write this like a try statement! I'll ask for forgiveness now.
+        if board[int(silo2[0]) - 1][int(silo2[1]) - 1] == 0:
             board[int(silo2[0]) - 1][int(silo2[1]) - 1] = 'o'
             break
+        print ("Spot is occupied! Try again!")
 
 #simpler way to do ^ == generalized 1 turn function, taking player number, board, and x/o but, I'd need to pass the board from the previous fnxn
 
