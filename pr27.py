@@ -42,7 +42,7 @@ def turn(board):
             silo2.append(elem.strip())#why does int not work?
         if board[int(silo2[0]) - 1][int(silo2[1]) - 1] != 0:
             print ("Spot is occupied! Try again!")
-        else:
+        else:#Oh, bc i write this like a try statement! I'll ask for forgiveness now.
             board[int(silo2[0]) - 1][int(silo2[1]) - 1] = 'o'
             break
 
@@ -62,10 +62,10 @@ if __name__ == '__main__':
              [0,0,0]] #cute pythonic way to do this?
 
     print ("Welcome to the game! Press Control + C to quit.")
-    #while True:
-    round1 = turn(staticBoard)
-    for lis in round1:
-        print (lis)
-
+    while True:
+        round1 = turn(staticBoard)
+        for lis in round1:
+            print (lis)
+#ok, id i get a spot is occupied, i always get it now
 
 
