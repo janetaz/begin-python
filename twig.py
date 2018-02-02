@@ -3,7 +3,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-#from selenium import webdriver
+from selenium import webdriver
 
 
 url = 'https://twigserial.wordpress.com/2014/12/24/taking-root-1-1/'
@@ -18,5 +18,10 @@ for p in divtag:
             count += 1
 print (count)
 
-#browse = webdriver.Firefox()
+browse = webdriver.Firefox(executable_path = '/Users/tkhamsi/Desktop/Projects/geckodriver')
+browse.get()
+#ok, this OPENS the window. we don't need that; we need...wait we do
+#we need to open it; then click 'next': then get THAT url 
+#so some kind of updating while loop
+#NICE im so pumped
 
