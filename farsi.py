@@ -1,15 +1,6 @@
 #! usr/bin/env python3
-#update in real time
-#english and farsi
-#clear answer box each time press review
-#hint button; one letter at a time
-#using dictionary API
-
-#to switch from English to Farsi: define 'words' or 'farsi_words' as a generic variable that u feed to the functions. have everything couched in an 'if' statement? or, just have two buttons that switch the main one
 #can simluate switchin' pages using frames. can i nest frames? i will figure out my frame sitch.
 
-#ok, hint function
-#is there a way I can feed variables to these functions, so I don't have to reopen file each time?
 
 from tkinter import *
 import random
@@ -37,7 +28,7 @@ e3 = Entry(f3)
 def commit():
     word = e1.get()
     definition = e2.get()
-    appendFile = open('farsi_words', 'a')
+    appendFile = open('farsi_verbs', 'a')
     appendFile.write('\n' + word + ': ' + definition)
     appendFile.close()
     e1.delete(0, 'end')
@@ -49,7 +40,7 @@ def review():
     #e3.pack(side = 'right')
     #b3.pack(side = 'right')
 
-    readFile = open('farsi_words', 'r') 
+    readFile = open('farsi_verbs', 'r') 
     size = 0
     splitList = []
     for line in readFile:
@@ -66,7 +57,7 @@ def answer():
     word = e3.get()
     def1 = t1.get('1.0','end-1c')#cuts off newline, but didn't work. needed split
     def1 = def1.strip('\n')
-    readFile = open('farsi_words', 'r') 
+    readFile = open('farsi_verbs', 'r') 
     for line in readFile:
         splitWord = line.split(': ')
         if def1 == splitWord[0].strip('\n'):
@@ -77,18 +68,22 @@ def answer():
     readFile.close()
 
 def hint():
-    def1 = t1.get('1.0','end-1c')
+    def1 = t1.get('1.0','2.0')
     def1 = def1.strip('\n')
-    readFile = open('farsi_words', 'r') 
+    readFile = open('farsi_verbs', 'r')
+    
     for line in readFile:
         splitWord = line.split(': ')
         if def1 == splitWord[0].strip('\n'):
             hint = splitWord[1]
 
-    count = 0
-    t1.insert(INSERT, hint[count])
-    count += 1
-    #hint referenced before assignment...when I call hint() more than once
+    hint1 = t1.get('2.0','end-1c')
+    lenHint1 = len(hint1)
+    if lenHint1 >= len(hint):
+        pass
+    else:
+        t1.insert(INSERT, hint[lenHint1])
+        print (hint1) #it appears this has a newline in there?
     readFile.close()
 
 #____________Buttons____________
